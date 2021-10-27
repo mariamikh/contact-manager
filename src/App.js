@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Contacts />
+      <Contacts branding="Contact Manager" />
     </div>
   );
 }
