@@ -3,11 +3,16 @@ import PropTypes from "prop-types";
 
 class Contact extends Component {
   state = {
-    showContactInfo: true,
+    showContactInfo: false,
   };
 
   onShowClick = (e) => {
     this.setState({ showContactInfo: !this.state.showContactInfo });
+  };
+
+  onDeleteClick = () => {
+    console.log("Deleting");
+    this.props.deleteClickHandler();
   };
 
   render() {
@@ -17,7 +22,17 @@ class Contact extends Component {
     return (
       <div className="card card-body mb-3">
         <h4>
-          {name} <i onClick={this.onShowClick} className="fas fa-sort-down" />
+          {name}{" "}
+          <i
+            onClick={this.onShowClick}
+            style={{ cursor: "pointer" }}
+            className="fas fa-sort-down"
+          />
+          <i
+            className="fas fa-times"
+            style={{ cursor: "pointer", float: "right", color: "red" }}
+            onClick={this.onDeleteClick}
+          ></i>
         </h4>
         {showContactInfo ? (
           <ul className="list-group">
@@ -32,6 +47,7 @@ class Contact extends Component {
 
 Contact.propTypes = {
   contact: PropTypes.object.isRequired,
+  deleteClickHandler: PropTypes.func.isRequired,
 };
 
 export default Contact;
