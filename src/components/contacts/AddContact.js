@@ -38,12 +38,14 @@ class AddContact extends Component {
     };
 
     // Clear State
-    this.setState = {
+    this.setState({
       name: "",
       email: "",
       phone: "",
       errors: {},
-    };
+    });
+
+    this.props.history.push("/");
 
     dispatch({
       type: "ADD_CONTACT",
